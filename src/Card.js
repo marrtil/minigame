@@ -6,7 +6,9 @@ import chicken from './assets/치킨.png';
 import cheeze from './assets/치즈.png';
 import choco from './assets/초콜릿.png';
 import shirimp from './assets/새우.png';
+import back from './assets/뒷면.png';
 import './Card.css'
+// import { useState } from 'react';
 
 const cardImage = {
     1:pizza,
@@ -29,9 +31,11 @@ const cardImage = {
 }
 
 
-function Card({value}){
-    const src=cardImage[value];
-    return <img alt={value} src={src}/>;
+
+
+function Card({value,className,onClick}){
+    const src= className==='front'? cardImage[value] : back;
+    return <img alt={value} src={src} class={className} onClick={onClick}/>;    //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
 
 export default Card;
