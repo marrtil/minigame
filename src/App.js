@@ -22,7 +22,7 @@ function App() {
       }
       setNum(num1);
       }
-    } //랜덤숫자를 주어지는걸 버튼을 눌렀을때만 되게 하기위해 버튼에 넣을 이벤트 핸들러로 만들었다
+    } //랜덤숫자를 주어지는걸 버튼을 눌렀을때만 생성
   }
   
   
@@ -33,9 +33,9 @@ function App() {
 
   var cardSet1=[];  //첫번째열을 위한 카드번호 배열
   var cardSet2=[];  //두번째열을 위한 카드번호 배열
-  for(let i=0; i<cardNum.length; i++)
+  for(let i=0; i<cardNum; i++)
   {
-    if(i>=num.length){
+    if(i>=cardNum/2){
       cardSet2.push(<Card value={num[i]} className='front' onClick={flip}/>); //num의 8~15번까지의 인덱스 값을 넣음
     }
     else {
