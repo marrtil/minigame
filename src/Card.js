@@ -11,6 +11,7 @@ import './Card.css'
 // import { useState } from 'react';
 
 const cardImage = {
+    0:back,
     1:pizza,
     2:banana,
     3:cookie,
@@ -33,8 +34,9 @@ const cardImage = {
 
 
 
-function Card({value,className,onClick}){
-    const src= className==='front'? cardImage[value] : back;
+function Card({value=0,className,onClick}){
+    const src= className==='front'? cardImage[value] : back; //class 이름으로 뒤집기... 였던것
+
     return <img alt={value} src={src} class={className} onClick={onClick}/>;    //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
 
