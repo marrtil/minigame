@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from 'react'
 import Card from './Card';
 import Button from './Button';
+import back from './assets/뒷면.png';
 
 
 
@@ -25,10 +26,21 @@ function App() {
     } //랜덤숫자를 주어지는걸 버튼을 눌렀을때만 생성
   }
   
+  const imageSave={
+
+  };
   
   const flip = (e) => {
+    var taget=e.target
     e.target.classList.toggle('front');
-    e.target.ClassList.toggle('back');
+    if(taget.classList.contains('front'))
+    {
+      taget.src=imageSave[taget.value];
+    }
+    else {
+      imageSave[taget.value]=taget.src;
+      taget.src=back;
+    }
   } // e.target에따라 front와 back Class를 토글 시키고싶었는데 클릭시에 front만 사라졌다 생긴다..
 
   var cardSet1=[];  //첫번째열을 위한 카드번호 배열
