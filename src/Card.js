@@ -11,7 +11,7 @@ import './Card.css'
 // import { useState } from 'react';
 
 const cardImage = {
-    0:back,
+    0:back, //뒷면을 위한 0값
     1:pizza,
     2:banana,
     3:cookie,
@@ -34,10 +34,10 @@ const cardImage = {
 
 
 
-function Card({value=0,className,onClick}){
-    const src= className==='front'? cardImage[value] : back; //class 이름으로 뒤집기... 였던것
+function Card({alt=0,className,onClick}){ //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
+    const src= className==='front'? cardImage[alt] : back; //class 이름으로 뒤집기... 였던것
 
-    return <img alt={value} src={src} class={className} onClick={onClick}/>;    //랜덤으로 부여받은 숫자에따라 이미지를 배정
+    return <img alt={alt} src={src} class={className} onClick={onClick}/>;    //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
 
 export default Card;
