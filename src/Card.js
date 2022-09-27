@@ -35,7 +35,7 @@ const cardImage = {
 
 
 function Card({alt=0,className,onClick}){ //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
-    const src= className==='front'? cardImage[alt] : back; //class 이름으로 뒤집기... 였던것
+    const src= cardImage[alt]; //class 이름으로 뒤집기... 였던것
 
     return <img alt={alt} src={src} class={className} onClick={onClick}/>;    //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
