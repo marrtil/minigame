@@ -96,11 +96,18 @@ function App() {
         //같은카드를 뽑았다면 앞면 표시상태로 클릭해도 이벤트가 진행되지 않게 해야한다
         cardSelect1=0;  
         cardSelect2=0;
-        const complete=document.querySelectorAll('.front');
-        complete.forEach(com => {
+        const front=document.querySelectorAll('.front');
+        front.forEach(com => {
           com.classList.add('complete');
           com.classList.remove('front');
         });
+        const complete = document.querySelectorAll('.complete');
+        if(complete.length===16)
+        {
+          setTimeout(function(){
+            alert('게임 끝!');
+          },200);
+        }
       }
       else if(cardSelect1>0&&cardSelect2>0&&Math.abs(cardSelect2-cardSelect1)!==8){
         setTimeout(function(){
@@ -137,15 +144,15 @@ function App() {
   
   return (
    <>
-  <div>
+  <div className='cardset'>
     {cardSet1}
   </div>
-  <div>
+  <div className='cardset'>
     {cardSet2}
+    <div className='button'>
+    <Button onClick={randStart}>시작하기</Button>
+    </div>
   </div>
-   <div>
-  <Button onClick={randStart}>시작하기</Button>
-  </div> 
    </>
   );
 }

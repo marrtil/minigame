@@ -1,7 +1,7 @@
-div {
-    width: 100%;
+.cardset {
+    width: auto;
 }
 img {
-    width: 16%;
     margin:10px;
+    width: 8%;
 }

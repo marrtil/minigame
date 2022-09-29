@@ -1,3 +1,5 @@
-/* .card{
-    content: url('./assets/뒷면.png');
-} */
+.button {
+    width:74%;
+    margin:10px;
+    text-align: center;
+}
