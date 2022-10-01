@@ -144,14 +144,19 @@ function App() {
   
   return (
    <>
+   <div className='top'>
+    <div id='title'>카드 뒤집기 게임</div>
+   </div>
+   <div id='content'>
   <div className='cardset'>
     {cardSet1}
   </div>
   <div className='cardset'>
     {cardSet2}
-    <div className='button'>
+  </div>
+  <div className='button'>
     <Button onClick={randStart}>시작하기</Button>
-    </div>
+  </div>
   </div>
    </>
   );

@@ -1,5 +1,19 @@
-.button {
-    width:74%;
-    margin:10px;
+.top {
+    height: 60px;
+    line-height: 60px;
+    background-color: rgb(244,143,127);
+}
+
+#title {
+    font-family:sans-serif;
     text-align: center;
+    vertical-align: middle;
+    color:white;
+    font-size: 30px;
+}
+
+#content {
+    background-color: beige;
+    height: 660px;
+    padding-top:182px;
 }

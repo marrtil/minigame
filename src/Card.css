@@ -1,7 +1,9 @@
 .cardset {
     width: auto;
+    text-align: center;
 }
 img {
     margin:10px;
     width: 8%;
+    border-radius: 12px;
 }
