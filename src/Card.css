@@ -6,4 +6,15 @@ img {
     margin:10px;
     width: 8%;
     border-radius: 12px;
+    
 }
+
+.front {
+    transform: rotateY(360deg);
+    transition: all ease 1s;
+}
+
+.back {
+    transition: all ease 1s;  
+}
+

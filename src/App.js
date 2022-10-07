@@ -18,6 +18,9 @@ function App() {
   var cardNum=16; //이건 나중에 따로 난이도 설정으로 갯수 바꿀수있게 해볼 예정
   const [num,setNum]=useState([]);
 
+  var cardSelect1=0;
+  var cardSelect2=0;
+
   var imageSave={
     0:back, //뒷면을 위한 0값
     1:pizza,
@@ -39,11 +42,11 @@ function App() {
   }; //이미지 객체를 사용하는게 편한거같다.. 이러면 컴포넌트로 사용하는 의미가있을까..
   
   const randStart = () => {
-    const front=document.querySelectorAll('.front');
+    const front=document.querySelectorAll('.back');
     const complete=document.querySelectorAll('.complete');
     front.forEach(fronts => {
-      fronts.classList.remove('front');
-      fronts.classList.add('back');
+      fronts.classList.remove('back');
+      fronts.classList.add('front');
     });
     complete.forEach(completes => {
       completes.classList.remove('complete');
@@ -64,16 +67,16 @@ function App() {
       }
     } //랜덤숫자를 주어지는걸 버튼을 눌렀을때만 생성
 
-    const cards=document.querySelectorAll('.back');
+    const cards=document.querySelectorAll('.front');
     cards.forEach((card,index) => {
       setTimeout(()=>{
         card.src=back;
+        card.setAttribute('class','back');
       },2000+100*index);
     }); //카드가 배치되고 일정시간이지나면 뒤집힌다
   }
   
-  var cardSelect1=0;
-  var cardSelect2=0;
+
   const flip = (e) => {
     var taget=e.target
     if(taget.classList.contains('complete'))
@@ -97,10 +100,13 @@ function App() {
         cardSelect1=0;  
         cardSelect2=0;
         const front=document.querySelectorAll('.front');
+        setTimeout(()=>{
         front.forEach(com => {
           com.classList.add('complete');
           com.classList.remove('front');
         });
+        }
+        ,600)
         const complete = document.querySelectorAll('.complete');
         if(complete.length===16)
         {
@@ -121,7 +127,7 @@ function App() {
         });
         cardSelect1=0;
         cardSelect2=0;
-        },300);
+        },700);
       }
     }
     else {
@@ -135,10 +141,10 @@ function App() {
   for(let i=0; i<cardNum; i++)
   {
     if(i>=cardNum/2){
-      cardSet2.push(<Card alt={num[i]} className='back' onClick={flip}/>); //num의 8~15번까지의 인덱스 값을 넣음
+      cardSet2.push(<Card alt={num[i]} className='front' onClick={flip}/>); //num의 8~15번까지의 인덱스 값을 넣음
     }
     else {
-      cardSet1.push(<Card alt={num[i]} className='back' onClick={flip}/>); //num의 0~7번까지의 인덱스 값을 넣음
+      cardSet1.push(<Card alt={num[i]} className='front' onClick={flip}/>); //num의 0~7번까지의 인덱스 값을 넣음
     }
   }
   
