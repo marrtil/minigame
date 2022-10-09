@@ -76,6 +76,7 @@ function App() {
     }); //카드가 배치되고 일정시간이지나면 뒤집힌다
   }
   
+  var miss=0;
 
   const flip = (e) => {
     var taget=e.target
@@ -105,9 +106,10 @@ function App() {
           com.classList.add('complete');
           com.classList.remove('front');
         });
+        console.log(miss);
         }
-        ,600)
-        const complete = document.querySelectorAll('.complete');
+        ,600);
+        var complete = document.querySelectorAll('.complete');
         if(complete.length===16)
         {
           setTimeout(function(){
@@ -117,8 +119,6 @@ function App() {
       }
       else if(cardSelect1>0&&cardSelect2>0&&Math.abs(cardSelect2-cardSelect1)!==8){
         setTimeout(function(){
-          console.log(cardSelect1+' 1번');
-          console.log(cardSelect2+' 2번');
           const front=document.querySelectorAll('.front');
           front.forEach(fronts =>{
           fronts.src=back;
@@ -127,8 +127,11 @@ function App() {
         });
         cardSelect1=0;
         cardSelect2=0;
+        miss+=1;
         },700);
       }
+
+      
     }
     else {
       taget.src=back; // 해당이미지를 뒷면으로 만든다
