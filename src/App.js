@@ -107,15 +107,16 @@ function App() {
           com.classList.remove('front');
         });
         console.log(miss);
-        }
-        ,600);
         var complete = document.querySelectorAll('.complete');
         if(complete.length===16)
         {
           setTimeout(function(){
-            alert('게임 끝!');
+            alert('게임 끝!'+miss+'번 실수하셨습니다');
+            console.log('게임끝');
           },200);
         }
+        }
+        ,600);
       }
       else if(cardSelect1>0&&cardSelect2>0&&Math.abs(cardSelect2-cardSelect1)!==8){
         setTimeout(function(){
