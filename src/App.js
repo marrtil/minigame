@@ -80,7 +80,7 @@ function App() {
 
   const flip = (e) => {
     var taget=e.target
-    if(taget.classList.contains('complete'))
+    if(taget.classList.contains('complete')||taget.classList.contains('front'))
     {taget.preventDefault();}
     if(taget.alt>0){
     taget.classList.toggle('front'); //front Class를 토글
@@ -135,8 +135,8 @@ function App() {
       
     }
     else {
-      taget.src=back; // 해당이미지를 뒷면으로 만든다
-      cardSelect1=0;
+      // taget.src=back; // 해당이미지를 뒷면으로 만든다
+      // cardSelect1=0;
     }
   } 
 
