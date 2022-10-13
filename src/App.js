@@ -17,9 +17,10 @@ import back from './assets/뒷면.png';
 function App() {
   var cardNum=16; //이건 나중에 따로 난이도 설정으로 갯수 바꿀수있게 해볼 예정
   const [num,setNum]=useState([]);
-
+  const [minute,setMin]=useState(30);
   var cardSelect1=0;
   var cardSelect2=0;
+  
 
   var imageSave={
     0:back, //뒷면을 위한 0값
@@ -74,6 +75,11 @@ function App() {
         card.setAttribute('class','back');
       },2000+100*index);
     }); //카드가 배치되고 일정시간이지나면 뒤집힌다
+    setMin(30);
+    setTimeout(()=>{
+      setMin(minute-1);
+    }
+    ,4000);
   }
   
   var miss=0;
@@ -112,7 +118,7 @@ function App() {
         {
           setTimeout(function(){
             alert('게임 끝!'+miss+'번 실수하셨습니다');
-            console.log('게임끝');
+            setMin(30);
           },200);
         }
         }
@@ -134,10 +140,6 @@ function App() {
 
       
     }
-    else {
-      // taget.src=back; // 해당이미지를 뒷면으로 만든다
-      // cardSelect1=0;
-    }
   } 
 
   var cardSet1=[];  //첫번째열을 위한 카드번호 배열
@@ -151,12 +153,26 @@ function App() {
       cardSet1.push(<Card alt={num[i]} className='front' onClick={flip}/>); //num의 0~7번까지의 인덱스 값을 넣음
     }
   }
+
+  const timeSet = (()=>{
+    if(minute<30&&minute>0){
+    setTimeout(()=>{
+      setMin(minute-1);
+    }
+    ,1000);
+  }
+  })();
+  if(minute===0){
+    alert('게임끝 실패하셨습니다.');
+  }
+  
   
   return (
    <>
    <div className='top'>
     <div id='title'>카드 뒤집기 게임</div>
    </div>
+   <h1 id='timer'>{minute}</h1>
    <div id='content'>
   <div className='cardset'>
     {cardSet1}

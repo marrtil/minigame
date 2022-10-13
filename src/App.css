@@ -1,3 +1,9 @@
+
+#root {
+    background-color: beige;
+
+}
+
 .top {
     height: 60px;
     line-height: 60px;
@@ -14,6 +20,12 @@
 
 #content {
     background-color: beige;
+    padding-top:10px;
     height: 600px;
-    padding-top:100px;
+}
+
+#timer {
+    text-align: center;
+    color: rgb(244,143,127);
+
 }
