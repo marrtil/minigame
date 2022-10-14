@@ -17,7 +17,6 @@ import back from './assets/뒷면.png';
 function App() {
   var cardNum=16; //이건 나중에 따로 난이도 설정으로 갯수 바꿀수있게 해볼 예정
   const [num,setNum]=useState([]);
-  const [minute,setMin]=useState(30);
   var cardSelect1=0;
   var cardSelect2=0;
   
@@ -75,11 +74,6 @@ function App() {
         card.setAttribute('class','back');
       },2000+100*index);
     }); //카드가 배치되고 일정시간이지나면 뒤집힌다
-    setMin(30);
-    setTimeout(()=>{
-      setMin(minute-1);
-    }
-    ,4000);
   }
   
   var miss=0;
@@ -99,11 +93,14 @@ function App() {
       {
         cardSelect1=taget.alt;
       }
-      else {cardSelect2=taget.alt; 
+      else {
+        cardSelect2=taget.alt; 
       }
-
+    console.log(1+'번'+cardSelect1);
+    console.log(2+'번'+cardSelect2);
       if(cardSelect1>0&&cardSelect2>0&&Math.abs(cardSelect2-cardSelect1)===8){ //뽑은 두카드의 alt값이 8차이라면 같은 카드다
         //같은카드를 뽑았다면 앞면 표시상태로 클릭해도 이벤트가 진행되지 않게 해야한다
+        console.log('짝됨');
         cardSelect1=0;  
         cardSelect2=0;
         const front=document.querySelectorAll('.front');
@@ -118,7 +115,6 @@ function App() {
         {
           setTimeout(function(){
             alert('게임 끝!'+miss+'번 실수하셨습니다');
-            setMin(30);
           },200);
         }
         }
@@ -153,26 +149,10 @@ function App() {
       cardSet1.push(<Card alt={num[i]} className='front' onClick={flip}/>); //num의 0~7번까지의 인덱스 값을 넣음
     }
   }
-
-  const timeSet = (()=>{
-    if(minute<30&&minute>0){
-    setTimeout(()=>{
-      setMin(minute-1);
-    }
-    ,1000);
-  }
-  })();
-  if(minute===0){
-    alert('게임끝 실패하셨습니다.');
-  }
   
   
   return (
    <>
-   <div className='top'>
-    <div id='title'>카드 뒤집기 게임</div>
-   </div>
-   <h1 id='timer'>{minute}</h1>
    <div id='content'>
   <div className='cardset'>
     {cardSet1}
