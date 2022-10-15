@@ -1,7 +1,12 @@
 import { useState } from "react";
 
-function Timer(){
+function Timer({name}){
 const [minute,setMin]=useState(30);
+
+const check=()=>{
+console.log(name);
+}
+check();
 
 const time = ()=>{
     if(minute>0)
@@ -12,7 +17,7 @@ const time = ()=>{
   const timer = ()=>{
     setTimeout(time,1000);
   }
-  if(minute<30)
+  if(name)
   {
     timer();
   }
