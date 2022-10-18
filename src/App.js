@@ -40,18 +40,28 @@ function App() {
     16: shirimp,
   }; //이미지 객체를 사용하는게 편한거같다.. 이러면 컴포넌트로 사용하는 의미가있을까..
 
-  const randStart = () => {
-    const front = document.querySelectorAll(".back");
+  const clear = () => {
+    setTime(false);
+
+    const back = document.querySelectorAll(".back");
     const complete = document.querySelectorAll(".complete");
-    front.forEach((fronts) => {
-      fronts.classList.remove("back");
-      fronts.classList.add("front");
+
+    setNum([]);
+
+    back.forEach((backs) => {
+      backs.classList.remove("back");
+      backs.classList.add("front");
     });
     complete.forEach((completes) => {
       completes.classList.remove("complete");
-      completes.classList.add("back");
+      completes.classList.add("front");
     }); //초기화를 위한 앞면인 카드들을 모두 뒷면으로
+  };
 
+  const randStart = (e) => {
+    if (time) {
+      e.target.preventDefault();
+    }
     var num1 = [];
     for (let i = 0; i < cardNum; i++) {
       var ran = Math.floor(Math.random() * cardNum + 1);
@@ -109,7 +119,6 @@ function App() {
       ) {
         //뽑은 두카드의 alt값이 8차이라면 같은 카드다
         //같은카드를 뽑았다면 앞면 표시상태로 클릭해도 이벤트가 진행되지 않게 해야한다
-        console.log("짝됨");
         cardSelect1 = 0;
         cardSelect2 = 0;
         const front = document.querySelectorAll(".front");
@@ -122,6 +131,7 @@ function App() {
           var complete = document.querySelectorAll(".complete");
           if (complete.length === 16) {
             setTimeout(function () {
+              setTime(false);
               alert("게임 끝!" + miss + "번 실수하셨습니다");
             }, 200);
           }
@@ -164,6 +174,7 @@ function App() {
         <div className="cardset">{cardSet2}</div>
         <div className="button">
           <Button onClick={randStart}>시작하기</Button>
+          <Button onClick={clear}>초기화</Button>
         </div>
       </div>
     </>

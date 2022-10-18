@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Timer({ name }) {
-  const [minute, setMin] = useState(30);
+  const [minute, setMin] = useState(60);
 
   const time = () => {
     if (minute > 0) {
@@ -11,8 +11,13 @@ function Timer({ name }) {
   const timer = () => {
     setTimeout(time, 1000);
   };
+
   if (name) {
     timer();
+  } else {
+    setTimeout(() => {
+      setMin(60);
+    }, 100);
   }
 
   if (minute === 0) {
