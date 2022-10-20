@@ -2,7 +2,7 @@
 
 [게임해보기](https://marrtil.github.io)
 
-<img width="1440" alt="스크린샷 2022-10-05 오후 10 50 20" src="https://user-images.githubusercontent.com/98064755/194568216-1d748840-5153-4963-bf7e-b94e6c8f5187.png">
+<img width="1434" alt="스크린샷 2022-10-19 오후 12 28 11" src="https://user-images.githubusercontent.com/98064755/196918384-2d0baddd-3ceb-437e-968b-4028cc17609d.png">
 
 ### 제작기간:9.24~10.1(하루 2시간정도씩 이틀은 못했습니다..) + 이후 조금씩 배우면서 추가중입니다!!
 
