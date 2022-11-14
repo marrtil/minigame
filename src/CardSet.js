@@ -1,6 +1,5 @@
 import back from "./assets/뒷면.png";
 import Card from "./Card";
-import { useState } from "react";
 
 function CardSet({ num, onTime }) {
   var cardSelect1 = 0;
@@ -74,13 +73,9 @@ function CardSet({ num, onTime }) {
   var cardSet2 = []; //두번째열을 위한 카드번호 배열
   for (let i = 0; i < 16; i++) {
     if (i >= 8) {
-      cardSet2.push(
-        <Card alt={num[i]} value={num[i]} className="front" onClick={flip} />
-      ); //num의 8~15번까지의 인덱스 값을 넣음
+      cardSet2.push(<Card alt={num[i]} className="front" onClick={flip} />); //num의 8~15번까지의 인덱스 값을 넣음
     } else {
-      cardSet1.push(
-        <Card alt={num[i]} value={num[i]} className="front" onClick={flip} />
-      ); //num의 0~7번까지의 인덱스 값을 넣음
+      cardSet1.push(<Card alt={num[i]} className="front" onClick={flip} />); //num의 0~7번까지의 인덱스 값을 넣음
     }
   }
 

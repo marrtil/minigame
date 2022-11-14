@@ -29,7 +29,7 @@ function App() {
     const cards = document.querySelectorAll(".front");
     cards.forEach((card, index) => {
       setTimeout(() => {
-        card.alt = 0;
+        card.setAttribute("alt", 0);
         card.setAttribute("class", "back");
       }, 2000 + 100 * index);
     }); //카드가 배치되고 일정시간이지나면 뒤집힌다
