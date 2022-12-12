@@ -8,7 +8,7 @@ import choco from "./assets/초콜릿.png";
 import shirimp from "./assets/새우.png";
 import back from "./assets/뒷면.png";
 import "./Card.css";
-// import { useState } from 'react';
+import { useState, useEffect } from "react";
 
 const cardImage = {
   0: back, //뒷면을 위한 0값
@@ -32,9 +32,15 @@ const cardImage = {
 
 function Card({ alt = 0, className, onClick }) {
   //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
-  const src = cardImage[alt]; //class 이름으로 뒤집기... 였던것
+  const [cardNum, setCardNum] = useState(alt);
+  const [saveNum, setSaveNum] = useState(0);
+  const src = cardImage[alt];
 
-  return <img alt={alt} src={src} class={className} onClick={onClick} />; //랜덤으로 부여받은 숫자에따라 이미지를 배정
+  useEffect(() => {
+    setSaveNum(alt);
+  }, []);
+
+  return <img alt={cardNum} src={src} class={className} onClick={onClick} />; //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
 
 export default Card;

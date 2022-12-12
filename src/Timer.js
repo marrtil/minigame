@@ -14,10 +14,6 @@ function Timer({ name }) {
 
   if (name) {
     timer();
-  } else {
-    setTimeout(() => {
-      setMin(60);
-    }, 100);
   }
 
   if (minute === 0) {
