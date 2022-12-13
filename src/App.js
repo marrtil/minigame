@@ -8,6 +8,7 @@ import back from "./assets/뒷면.png";
 function App() {
   const [time, setTime] = useState(false);
   const [num, setNum] = useState([]);
+  const [clearer, setClear] = useState(false);
 
   const randStart = (e) => {
     if (time) {
@@ -31,8 +32,7 @@ function App() {
     const cards = document.querySelectorAll(".front");
     cards.forEach((card, index) => {
       setTimeout(() => {
-        num[count] = 0;
-        console.log(count);
+        card.src = back;
         card.setAttribute("class", "back");
         count++;
       }, 2000 + 100 * index);
@@ -45,6 +45,7 @@ function App() {
   const clear = () => {
     setTime(false);
     setNum([]);
+    setClear(true);
     const back = document.querySelectorAll(".back");
     const complete = document.querySelectorAll(".complete");
 
@@ -60,7 +61,7 @@ function App() {
 
   return (
     <>
-      <Timer name={time} />
+      <Timer name={time} clearer={clearer} />
       <div id="content">
         <CardSet num={num} onTime={setTime} timer={time} />
         <div className="button">

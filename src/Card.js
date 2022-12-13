@@ -32,15 +32,10 @@ const cardImage = {
 
 function Card({ alt = 0, className, onClick }) {
   //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
-  const [cardNum, setCardNum] = useState(alt);
-  const [saveNum, setSaveNum] = useState(0);
+
   const src = cardImage[alt];
 
-  useEffect(() => {
-    setSaveNum(alt);
-  }, []);
-
-  return <img alt={cardNum} src={src} class={className} onClick={onClick} />; //랜덤으로 부여받은 숫자에따라 이미지를 배정
+  return <img alt={alt} src={src} class={className} onClick={onClick} />; //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
 
 export default Card;
