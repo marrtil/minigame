@@ -29,7 +29,7 @@ const imageSave = {
   16: shirimp,
 };
 
-function CardSet({ num, onTime, time }) {
+function CardSet({ num, onTime, stopper }) {
   var cardSelect1 = 0;
   var cardSelect2 = 0;
 
@@ -74,6 +74,7 @@ function CardSet({ num, onTime, time }) {
           if (complete.length === 16) {
             setTimeout(function () {
               onTime(false);
+              stopper(true);
               alert("게임 끝!");
             }, 200);
           }

@@ -9,11 +9,14 @@ function App() {
   const [time, setTime] = useState(false);
   const [num, setNum] = useState([]);
   const [clearer, setClear] = useState(false);
+  const [stop, setStop] = useState(false);
 
   const randStart = (e) => {
-    if (time) {
+    if (stop || time) {
+      alert("초기화 해주세요!");
       e.target.preventDefault();
     }
+    setClear(false);
     var num1 = [];
     for (let i = 0; i < 16; i++) {
       var ran = Math.floor(Math.random() * 16 + 1);
@@ -46,6 +49,7 @@ function App() {
     setTime(false);
     setNum([]);
     setClear(true);
+    setStop(false);
     const back = document.querySelectorAll(".back");
     const complete = document.querySelectorAll(".complete");
 
@@ -63,7 +67,7 @@ function App() {
     <>
       <Timer name={time} clearer={clearer} />
       <div id="content">
-        <CardSet num={num} onTime={setTime} timer={time} />
+        <CardSet num={num} onTime={setTime} timer={time} stopper={setStop} />
         <div className="button">
           <Button onClick={randStart}>시작하기</Button>
           <Button onClick={clear}>초기화</Button>
