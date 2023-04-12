@@ -3,7 +3,6 @@ import { useState } from "react";
 import Timer from "./Timer";
 import Button from "./Button";
 import CardSet from "./CardSet";
-import back from "./assets/뒷면.png";
 
 function App() {
   const [time, setTime] = useState(false);
@@ -14,7 +13,7 @@ function App() {
   const randStart = (e) => {
     if (stop || time) {
       alert("초기화 해주세요!");
-      e.target.preventDefault();
+      return;
     }
     setClear(false);
     var num1 = [];
@@ -31,15 +30,6 @@ function App() {
       }
     } //랜덤숫자를 주어지는걸 버튼을 눌렀을때만 생성
 
-    var count = 0;
-    const cards = document.querySelectorAll(".front");
-    cards.forEach((card, index) => {
-      setTimeout(() => {
-        card.src = back;
-        card.setAttribute("class", "back");
-        count++;
-      }, 2000 + 100 * index);
-    }); //카드가 배치되고 일정시간이지나면 뒤집힌다
     setTimeout(() => {
       setTime(true);
     }, 3000);
@@ -50,18 +40,9 @@ function App() {
     setNum([]);
     setClear(true);
     setStop(false);
-    const back = document.querySelectorAll(".back");
-    const complete = document.querySelectorAll(".complete");
-
-    back.forEach((backs) => {
-      backs.classList.remove("back");
-      backs.classList.add("front");
-    });
-    complete.forEach((completes) => {
-      completes.classList.remove("complete");
-      completes.classList.add("front");
-    }); //초기화를 위한 앞면인 카드들을 모두 뒷면으로
   };
+
+  console.log(num);
 
   return (
     <>

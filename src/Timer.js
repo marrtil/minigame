@@ -15,12 +15,10 @@ function Timer({ name, clearer }) {
   if (name) {
     timer();
   } else if (clearer && !name) {
-    console.log("여기가됨");
     setTimeout(() => {
       setMin(60);
     }, 100);
   }
-  console.log(clearer);
 
   if (minute === 0) {
     alert("게임끝 실패하셨습니다.");

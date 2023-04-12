@@ -1,17 +1,14 @@
 .cardset {
-    width: auto;
-    text-align: center;
+  width: auto;
+  text-align: center;
 }
 img {
-    margin:10px;
-    width: 8%;
-    border-radius: 12px;
-    transition: all ease 1s;
-    
+  margin: 10px;
+  width: 8%;
+  border-radius: 12px;
+  transition: all ease 1s;
 }
 
 .back {
-    transform: rotateY(360deg);
+  transform: rotateY(360deg);
 }
-
-
