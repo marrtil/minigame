@@ -30,31 +30,37 @@ const cardImage = {
   16: shirimp,
 };
 
-function Card({ alt = 0, select }) {
+function Card({ alt = 0, select, fb, fber, index }) {
   //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
   const nums = useMemo(() => alt, [alt]);
+  const card = useMemo(() => {
+    if (fb[index]) return "front";
+    else return "back";
+  }, [fb, index]);
   const [num, setNum] = useState(alt);
-  const [complete, setComple] = useState(false);
 
   useEffect(() => {
     setNum(alt);
   }, [alt]);
 
   useEffect(() => {
-    if (!complete) setNum(0);
-  }, [complete]);
+    if (fb[index]) setNum(nums);
+    else setNum(0);
+  }, [fb, nums, index]);
 
   const flip = () => {
-    if (complete) return;
-    if (num) setNum(0);
+    if (fb[index]) return;
     else {
       setNum(nums);
-      setComple(select(nums));
+      fber((prev) => {
+        prev[index] = true;
+        return prev;
+      });
+      select(nums, index);
     }
   };
-  console.log(complete);
 
-  return <img alt={alt} src={cardImage[num]} onClick={flip} />; //랜덤으로 부여받은 숫자에따라 이미지를 배정
+  return <img alt={alt} src={cardImage[num]} onClick={flip} className={card} />; //랜덤으로 부여받은 숫자에따라 이미지를 배정
 }
 
 export default Card;

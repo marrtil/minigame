@@ -48,7 +48,7 @@ function App() {
     <>
       <Timer name={time} clearer={clearer} />
       <div id="content">
-        <CardSet num={num} onTime={setTime} timer={time} stopper={setStop} />
+        <CardSet num={num} time={time} />
         <div className="button">
           <Button onClick={randStart}>시작하기</Button>
           <Button onClick={clear}>초기화</Button>

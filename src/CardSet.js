@@ -1,32 +1,62 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card";
 
-function CardSet({ num, onTime, stopper }) {
+function CardSet({ num, time }) {
   var cardSet1 = []; //첫번째열을 위한 카드번호 배열
   var cardSet2 = []; //두번째열을 위한 카드번호 배열
-  const [select, setSelect] = useState(0);
+  const [select, setSelect] = useState([]);
+  const [frontback, setFB] = useState(Array(16).fill(true));
 
-  const selecter = (num) => {
+  useEffect(() => {
+    if (time) {
+      setFB(Array(16).fill(false));
+    } else {
+      setFB(Array(16).fill(true));
+    }
+  }, [time]);
+
+  console.log(select);
+  console.log(frontback);
+
+  const selecter = (num, index) => {
     if (!select) {
-      setSelect(num);
-      return true;
+      setSelect([num, index]);
     } else {
       if (select === num) {
-        setSelect(0);
-        return true;
+        setSelect([]);
       } else {
-        setSelect(0);
-        return false;
+        setTimeout(() => {
+          setFB((prev) => {
+            prev[index] = false;
+            prev[select[1]] = false;
+          });
+          setSelect([]);
+        }, 1000);
       }
     }
   };
-  console.log(select);
 
   for (let i = 0; i < 16; i++) {
     if (i >= 8) {
-      cardSet2.push(<Card alt={num[i]} className="front" select={selecter} />); //num의 8~15번까지의 인덱스 값을 넣음
+      cardSet2.push(
+        <Card
+          alt={num[i]}
+          fb={frontback}
+          fber={setFB}
+          index={i}
+          select={selecter}
+        />
+      ); //num의 8~15번까지의 인덱스 값을 넣음
     } else {
-      cardSet1.push(<Card alt={num[i]} className="front" select={selecter} />); //num의 0~7번까지의 인덱스 값을 넣음
+      cardSet1.push(
+        <Card
+          alt={num[i]}
+          fb={frontback}
+          fber={setFB}
+          index={i}
+          select={selecter}
+        />
+      ); //num의 0~7번까지의 인덱스 값을 넣음
     }
   }
 
