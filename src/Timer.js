@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Timer({ name, clearer }) {
+function Timer({ times, clearer }) {
   const [minute, setMin] = useState(60);
 
   const time = () => {
@@ -12,15 +12,15 @@ function Timer({ name, clearer }) {
     setTimeout(time, 1000);
   };
 
-  if (name) {
+  if (times) {
     timer();
-  } else if (clearer && !name) {
+  } else if (clearer && !times) {
     setTimeout(() => {
       setMin(60);
     }, 100);
   }
 
-  if (minute === 0) {
+  if (minute === 0 && !clearer) {
     alert("게임끝 실패하셨습니다.");
   }
 

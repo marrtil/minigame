@@ -15,20 +15,24 @@ function CardSet({ num, time }) {
     }
   }, [time]);
 
-  console.log(select);
-  console.log(frontback);
+  useEffect(() => {
+    var a = new Set(frontback);
+    if (a[0] && a.length === 1) alert("게임끝!");
+  }, [frontback]);
 
   const selecter = (num, index) => {
-    if (!select) {
+    if (!select.length) {
       setSelect([num, index]);
     } else {
-      if (select === num) {
+      if (select[0] % 8 === num % 8) {
         setSelect([]);
       } else {
         setTimeout(() => {
           setFB((prev) => {
-            prev[index] = false;
-            prev[select[1]] = false;
+            var a = [...prev];
+            a[index] = false;
+            a[select[1]] = false;
+            return a;
           });
           setSelect([]);
         }, 1000);
@@ -40,6 +44,7 @@ function CardSet({ num, time }) {
     if (i >= 8) {
       cardSet2.push(
         <Card
+          key={i}
           alt={num[i]}
           fb={frontback}
           fber={setFB}
@@ -50,6 +55,7 @@ function CardSet({ num, time }) {
     } else {
       cardSet1.push(
         <Card
+          key={i}
           alt={num[i]}
           fb={frontback}
           fber={setFB}

@@ -32,21 +32,21 @@ const cardImage = {
 
 function Card({ alt = 0, select, fb, fber, index }) {
   //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
-  const nums = useMemo(() => alt, [alt]);
+  const nums = useMemo(() => alt, [alt]); //원래 자기 숫자를 저장
   const card = useMemo(() => {
     if (fb[index]) return "front";
     else return "back";
-  }, [fb, index]);
+  }, [fb[index]]);
   const [num, setNum] = useState(alt);
-
-  useEffect(() => {
-    setNum(alt);
-  }, [alt]);
+  // const num = useMemo(() => {
+  //   if (fb[index]) return nums;
+  //   else return 0;
+  // }, [fb[index], nums]); //얘로하면 어째 두번째 카드누를때 안뒤집힘
 
   useEffect(() => {
     if (fb[index]) setNum(nums);
     else setNum(0);
-  }, [fb, nums, index]);
+  }, [fb, index, nums]);
 
   const flip = () => {
     if (fb[index]) return;

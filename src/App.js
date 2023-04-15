@@ -46,7 +46,7 @@ function App() {
 
   return (
     <>
-      <Timer name={time} clearer={clearer} />
+      <Timer times={time} clearer={clearer} />
       <div id="content">
         <CardSet num={num} time={time} />
         <div className="button">
