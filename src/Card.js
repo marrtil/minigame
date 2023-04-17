@@ -30,7 +30,7 @@ const cardImage = {
   16: shirimp,
 };
 
-function Card({ alt = 0, select, fb, fber, index }) {
+function Card({ alt = 0, select, fb, fber, index, block }) {
   //맨처음 카드들을 뒷면으로 배치하기위해 랜덤숫자가 들어오기전 초기값 0을 가지게함
   const nums = useMemo(() => alt, [alt]); //원래 자기 숫자를 저장
   const card = useMemo(() => {
@@ -49,7 +49,7 @@ function Card({ alt = 0, select, fb, fber, index }) {
   }, [fb, index, nums]);
 
   const flip = () => {
-    if (fb[index]) return;
+    if (fb[index] || block) return;
     else {
       setNum(nums);
       fber((prev) => {
