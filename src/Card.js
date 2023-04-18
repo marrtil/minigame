@@ -36,27 +36,29 @@ function Card({ alt = 0, select, fb, fber, index, block }) {
   const card = useMemo(() => {
     if (fb[index]) return "front";
     else return "back";
-  }, [fb[index]]);
-  const [num, setNum] = useState(alt);
+  }, [fb[index]]); //앞면 뒷면 css를 위해 class이름을 useMemo로 저장
+  const [num, setNum] = useState(alt); //앞먄그림과 뒷면을 표현하기위한 state
   // const num = useMemo(() => {
   //   if (fb[index]) return nums;
   //   else return 0;
   // }, [fb[index], nums]); //얘로하면 어째 두번째 카드누를때 안뒤집힘
 
   useEffect(() => {
-    if (fb[index]) setNum(nums);
-    else setNum(0);
+    if (fb[index])
+      setNum(nums); //자기 위치의 frontback index가 true가 되면 앞면
+    else setNum(0); //false면 뒷면 처리
   }, [fb, index, nums]);
 
   const flip = () => {
-    if (fb[index] || block) return;
+    if (fb[index] || block)
+      return; //이미 앞면일때나 틀려서 다시 뒤집는 도중일때 못건드리게 하기 위한 조건
     else {
-      setNum(nums);
+      setNum(nums); //뒷면일경우 앞면으로
       fber((prev) => {
         prev[index] = true;
         return prev;
       });
-      select(nums, index);
+      select(nums, index); //뒤집은 첫번째카드라면 번호와 index저장 , 두번째라면 첫번째 값과 비교하고 뒤집기위한 함수
     }
   };
 
