@@ -13,7 +13,7 @@ function Timer({ times, clearer }) {
 
   if (times) {
     timer();
-  } else if (clearer && !times) {
+  } else if (clearer) {
     setTimeout(() => {
       setMin(60);
     }, 100);
