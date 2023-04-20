@@ -14,7 +14,7 @@ function CardSet({ num, time, stopper }) {
     if (check) {
       var a = new Set(frontback); //모두 앞면인 배열을 set으로 만들면 true하나만 담긴 size가 1인 set이된다
       a = [...a]; //인덱스 처리하기위하여 배열로 변형
-      if (a.length === 1 && a[0]) {
+      if (a.length === 1 && a[0] && time) {
         //true임을 체크하기위해
         setTimeout(() => {
           stopper(false); //끝나면 끝난 시간보이게 하기위해
